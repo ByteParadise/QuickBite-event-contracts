@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package quickbite.account.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/ByteParadise/QuickBite-event-contracts/gen/go/quickbite/account/v1;accountv1";
+
+// Published by account-service when a customer saves or changes an address.
+// Owned by the Accounts team. Consumed by order-service.
+message AddressSaved {
+  // Unique per event. Consumers use it to ignore duplicates.
+  string event_id = 1;
+  google.protobuf.Timestamp occurred_at = 2;
+  string customer_id = 3;
+  string address_id = 4;
+  Address address = 5;
+}
+
+message Address {
+  string line1 = 1;
+  string line2 = 2;
+  string city = 3;
+  string region = 4;
+  string postal_code = 5;
+  // ISO 3166-1 alpha-2, for example "US".
+  string country_code = 6;
+  double latitude = 7;
+  double longitude = 8;
+}
