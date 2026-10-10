@@ -2,7 +2,6 @@
 # checks to run against them — `lint` and `breaking` are read by `buf lint`
 # and `buf breaking`. This file has nothing to do with code generation;
 # see buf.gen.yaml for that.
-
 version: v2
 
 # The `modules` section tells buf where to find the schema files. Each module
@@ -11,6 +10,7 @@ version: v2
 # buf.yaml file. The `path` can be a relative path or a remote URL.
 modules:
   - path: proto
+    name: buf.build/byteparadise/quickbite-event-contracts
 
 lint:
   use:
